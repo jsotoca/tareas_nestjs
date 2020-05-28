@@ -3,9 +3,13 @@ import { TareasController } from './tareas.controller';
 import { TareasService } from './tareas.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import TareaRepository from './tareas.repository';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([TareaRepository])],
+  imports: [
+    TypeOrmModule.forFeature([TareaRepository]),
+    AuthModule
+  ],
   controllers: [TareasController],
   providers: [TareasService]
 })

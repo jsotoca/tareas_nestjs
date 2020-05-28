@@ -1,11 +1,13 @@
+import { AuthGuard } from '@nestjs/passport';
 import { TareasService } from './tareas.service';
-import { Controller, Get, Body, ValidationPipe, Param, ParseIntPipe, Post, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Body, ValidationPipe, Param, ParseIntPipe, Post, Put, Delete, UseGuards } from '@nestjs/common';
 import FiltrarTareasDTO from './dto/filtrar-tareas.dto';
 import CrearTareaDTO from './dto/crear-tarea.dto';
 import { EstadoTarea } from './tareas.estados';
 import EstadosTareaPipe from './pipes/estados-tareas.pipe';
 
 @Controller('tareas')
+@UseGuards(AuthGuard('jwt'))
 export class TareasController {
     constructor(
         private tareasService:TareasService
