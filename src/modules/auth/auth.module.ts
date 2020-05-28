@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import UsuarioRepository from './usuario.repository';
 import { JwtProvider } from './jwt.service';
 import { PassportModule } from '@nestjs/passport';
+import JwtStrategy from './jwt.strategy';
 @Module({
   imports: [
     PassportModule.register({defaultStrategy:'jwt'}),
@@ -12,6 +13,13 @@ import { PassportModule } from '@nestjs/passport';
     ...JwtProvider
   ],
   controllers: [AuthController],
-  providers: [AuthService]
+  providers: [
+    AuthService,
+    JwtStrategy
+  ],
+  exports:[
+    JwtStrategy,
+    PassportModule
+  ]
 })
 export class AuthModule {}
