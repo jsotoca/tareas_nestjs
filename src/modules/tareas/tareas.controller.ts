@@ -3,6 +3,7 @@ import { Controller, Get, Body, ValidationPipe, Param, ParseIntPipe, Post, Put, 
 import FiltrarTareasDTO from './dto/filtrar-tareas.dto';
 import CrearTareaDTO from './dto/crear-tarea.dto';
 import { EstadoTarea } from './tareas.estados';
+import EstadosTareaPipe from './pipes/estados-tareas.pipe';
 
 @Controller('tareas')
 export class TareasController {
@@ -32,7 +33,7 @@ export class TareasController {
     @Put('/:id')
     async actualizarTarea(
         @Param('id',ParseIntPipe) id:number,
-        @Body('estado') estado:EstadoTarea
+        @Body('estado',EstadosTareaPipe) estado:EstadoTarea
     ){
         return await this.tareasService.actualizarTarea(id,estado);
     }

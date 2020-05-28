@@ -35,7 +35,7 @@ export class TareasService {
 
     async eliminarTarea(id:number){
         const eliminado = await this.tareaRepository.delete(id);
-        if(eliminado.affected !== 0) throw new NotFoundException(`No se encontro tarea con id ${id}`);
+        if(eliminado.affected === 0) throw new NotFoundException(`No se encontro tarea con id ${id}`);
         return `Se elimino la tarea con id ${id}`;
     }
 }
