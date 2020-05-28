@@ -3,5 +3,6 @@ export enum Configuration {
     DB_HOST='DB_HOST',
     DB_NAME='DB_NAME',
     DB_USER='DB_USER',
-    DB_PASS='DB_PASS'
+    DB_PASS='DB_PASS',
+    TOKEN_SECRET='TOKEN_SECRET'
 }

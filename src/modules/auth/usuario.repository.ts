@@ -30,7 +30,7 @@ export default class UsuarioRepository extends Repository<Usuario>{
     async singIn(authCredencialesDTO:AuthCredencialesDTO){
         const {usuario,password} = authCredencialesDTO;
         const encontrado = await this.findOne({usuario});
-        if(encontrado && encontrado.compararPasswords(password)) return encontrado.id;
+        if(encontrado && encontrado.compararPasswords(password)) return encontrado.usuario;
         else throw new UnauthorizedException('usuario y/o password incorrectos.');
     }
 }
